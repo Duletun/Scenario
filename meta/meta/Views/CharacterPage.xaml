@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="meta.Views.CharacterPage" Title="Информация о персонаже">
+    <StackLayout>
+        <StackLayout x:Name="characterStack">
+            <Label x:Name="q" Text="Имя" />
+            <Entry Text="{Binding Name}" FontSize="Medium" />
+            <Label Text="Иконка" />
+            <Button ImageSource="{Binding ImagePath}" HorizontalOptions="Start"  WidthRequest="82" HeightRequest="82" BorderWidth="1" Command="{Binding SwitchImageCommand}" CommandParameter="{Binding}"/>
+            <Label Text="Описание" />
+            <Editor Text="{Binding Description}" FontSize="Medium" BackgroundColor="#e3e3e3" HeightRequest="250" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Button x:Name="addButton" Text="Добавить" Command="{Binding ListViewModel.SaveCharacterCommand}" CommandParameter="{Binding}" IsVisible="true"/>
+            <Button Text="Удалить" Command="{Binding ListViewModel.DeleteCharacterCommand}" CommandParameter="{Binding}" />
+            <Button Text="Назад" Command="{Binding Path=ListViewModel.BackSaveCommand}" CommandParameter="{Binding}"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
