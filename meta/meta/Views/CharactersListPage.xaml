@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="meta.Views.CharactersListPage" Title="Персонажи">
     <StackLayout>
-        <Button Text="Добавить" Command="{Binding CreateCharacterCommand}" />
+        <Button Text="ADD" Command="{Binding CreateCharacterCommand}" />
         <ListView x:Name="booksList" ItemsSource="{Binding Characters}"
               SelectedItem="{Binding SelectedCharacter, Mode=TwoWay}" HasUnevenRows="True">
             <ListView.ItemTemplate>

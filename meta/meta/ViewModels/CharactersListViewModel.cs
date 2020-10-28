@@ -35,7 +35,8 @@ namespace meta.ViewModels
             charlik = (App.Database.GetItems().ToList()).ConvertAll(x => new CharacterViewModel
             {
                 Character = x,
-                ListViewModel = this
+                ListViewModel = this,
+                IsCreated = true
             });
             //  {
             //   Character = x,

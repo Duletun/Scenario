@@ -9,8 +9,10 @@ namespace meta
 {
     public partial class App : Application
     {
+        public const string DATABASE_NAME2 = "chapters.db";
         public const string DATABASE_NAME = "characters.db";
         public static CharacterRepository database;
+        public static ChapterRepository database2;
         public static CharacterRepository Database
         {
             get
@@ -23,8 +25,21 @@ namespace meta
             }
 
         }
+        public static ChapterRepository Database2
+        {
+            get
+            {
+                if (database2 == null)
+                {
+                    database2 = new ChapterRepository(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DATABASE_NAME2));
+                }
+                return database2;
+            }
+
+        }
         public App()
         {
+           // MainPage = new NavigationPage(Page1());
              MainPage = new NavigationPage(new CharactersListPage());
             // MainPage = new ImagesListPage();
             System.Console.WriteLine("Hello");
