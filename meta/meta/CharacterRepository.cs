@@ -10,9 +10,9 @@ namespace meta
     public class CharacterRepository
     {
         SQLiteConnection database;
-        public CharacterRepository(string databasePah )
+        public CharacterRepository(string databasePath )
         {
-            database = new SQLiteConnection(databasePah);
+            database = new SQLiteConnection(databasePath);
             database.CreateTable< Character >();
         }
         public Character GetItem(int id)

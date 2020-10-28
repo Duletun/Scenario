@@ -11,13 +11,13 @@ namespace meta.Models
         [PrimaryKey, AutoIncrement, Column("_id")]
 
         public int Id { get; set; } = count;
-        string Title { get; set; }
-        string Text { get; set; }
+        public string Title { get; set; }
+        public string Text { get; set; }
         public Chapter()
         {
             count++;
         }
-        int Words 
+        public int Words 
         { 
             get
             {

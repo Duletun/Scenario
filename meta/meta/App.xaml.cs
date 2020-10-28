@@ -39,8 +39,16 @@ namespace meta
         }
         public App()
         {
-           // MainPage = new NavigationPage(Page1());
-             MainPage = new NavigationPage(new CharactersListPage());
+            var tabbedPage = new TabbedPage();
+            NavigationPage charsp = new NavigationPage(new CharactersListPage());
+            NavigationPage.SetHasNavigationBar(charsp, false);
+            tabbedPage.Children.Add(charsp);
+            charsp.Title = "Персонажи";
+            tabbedPage.Children.Add(new NavigationPage(new ChaptersListPage()) { Title = "Главы" });
+
+            MainPage = tabbedPage;
+            //MainPage = new TabbedMain();
+             //MainPage = new NavigationPage(new CharactersListPage());
             // MainPage = new ImagesListPage();
             System.Console.WriteLine("Hello");
         }

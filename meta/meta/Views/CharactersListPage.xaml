@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="meta.Views.CharactersListPage" Title="Персонажи">
+             x:Class="meta.Views.CharactersListPage" Title="Персонажи"
+             NavigationPage.HasNavigationBar = "false">
     <StackLayout>
-        <Button Text="ADD" Command="{Binding CreateCharacterCommand}" />
+        <Button Text="Добавить" Command="{Binding CreateCharacterCommand}" />
         <ListView x:Name="booksList" ItemsSource="{Binding Characters}"
               SelectedItem="{Binding SelectedCharacter, Mode=TwoWay}" HasUnevenRows="True">
             <ListView.ItemTemplate>
