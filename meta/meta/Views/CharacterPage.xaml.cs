@@ -20,6 +20,12 @@ namespace meta.Views
             if (vm.IsCreated == true)
             {
                 addButton.IsVisible = false;
+                backButton.IsVisible = false;
+            }
+            else
+            {
+                delButton.IsVisible = false;
+                saveButton.IsVisible = false;
             }
             ViewModel = vm;
             this.BindingContext = ViewModel;

@@ -14,8 +14,9 @@
         </StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
             <Button x:Name="addButton" Text="Добавить" Command="{Binding ListViewModel.SaveCharacterCommand}" CommandParameter="{Binding}" IsVisible="true"/>
-            <Button Text="Удалить" Command="{Binding ListViewModel.DeleteCharacterCommand}" CommandParameter="{Binding}" />
-            <Button Text="Назад" Command="{Binding Path=ListViewModel.BackSaveCommand}" CommandParameter="{Binding}"/>
+            <Button x:Name="delButton" Text="Удалить" Command="{Binding ListViewModel.DeleteCharacterCommand}" CommandParameter="{Binding}" />
+            <Button x:Name="backButton" Text="Назад" Command="{Binding Path=ListViewModel.BackCommand}" CommandParameter="{Binding}"/>
+            <Button x:Name="saveButton" Text="Сохранить" Command="{Binding Path=ListViewModel.BackSaveCommand}" CommandParameter="{Binding}"/>
         </StackLayout>
     </StackLayout>
 </ContentPage>

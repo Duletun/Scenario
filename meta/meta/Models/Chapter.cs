@@ -5,6 +5,7 @@ using SQLite;
 
 namespace meta.Models
 {
+    [Table("Chapters")]
     public class Chapter
     {
         static int count = 1;

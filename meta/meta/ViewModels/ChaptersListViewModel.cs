@@ -15,6 +15,7 @@ namespace meta.ViewModels
     public class ChaptersListViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<ChapterViewModel> Chapters { get; set; }
+        public bool NeedToReload { get; set; } = false;
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ICommand CreateChapterCommand { protected set; get; }
@@ -22,7 +23,7 @@ namespace meta.ViewModels
         public ICommand SaveChapterCommand { protected set; get; }
         public ICommand BackCommand { protected set; get; }
         public ICommand BackSaveCommand { protected set; get; }
-        ChapterViewModel selectedCharacter;
+        ChapterViewModel selectedChapter;
 
         public INavigation Navigation { get; set; }
 
@@ -50,7 +51,7 @@ namespace meta.ViewModels
 
         }
 
-        public ChapterViewModel selectedChapter
+        public ChapterViewModel SelectedChapter
         {
             get { return selectedChapter; }
             set
@@ -96,8 +97,8 @@ namespace meta.ViewModels
             ChapterViewModel chapter = chapterObject as ChapterViewModel;
             if (chapter != null && chapter.IsValid)
             {
-                Chapters.Add(chapter);
                 chapter.IsCreated = true;
+                Chapters.Add(chapter);
                 App.Database2.SaveItem(chapter.Chapter);
             }
             Back();

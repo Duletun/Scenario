@@ -30,7 +30,7 @@ namespace meta
             // }
             // else
             //  {
-          //  System.Console.WriteLine("Заинсерчен {0} iq {1}. Всего {2} чаптеров", item.Title, item.Id, (database.Table<Character>().ToList()).Count);
+            System.Console.WriteLine("Заинсерчен {0} iq {1}. Всего {2} чаптеров", item.Title, item.Id, (database2.Table<Chapter>().ToList()).Count);
             return database2.Insert(item);
             //}
         }
@@ -47,6 +47,7 @@ namespace meta
         public void UpdateItem(Chapter item)
         {
             database2.Update(item);
+            System.Console.WriteLine("Заапдейчен{0} iq {1}. Всего {2} чаптеров", item.Title, item.Id, (database2.Table<Chapter>().ToList()).Count);
         }
     }
 }

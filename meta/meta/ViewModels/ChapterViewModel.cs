@@ -13,7 +13,8 @@ namespace meta.ViewModels
 {
     public class ChapterViewModel : INotifyPropertyChanged
     {
-        ChaptersListViewModel lvm;
+        public ChaptersListViewModel lvm;
+        public bool IsVisible { get; set; } = false;
         public ChaptersListViewModel ListViewModel
         {
             get { return lvm; }
