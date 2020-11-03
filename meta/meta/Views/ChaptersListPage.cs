@@ -30,7 +30,7 @@ namespace meta.Views
                 RowSpacing = 35,
                 RowDefinitions =
                 {
-
+                    new RowDefinition {Height = 200}
                 },
                 ColumnDefinitions =
                 {
@@ -41,27 +41,76 @@ namespace meta.Views
             var tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.Tapped += (sender, e) =>
             {
-                System.Console.WriteLine("TAPPEEEEEEEEEEEEEEEEEEEEEED");
-                // cast to an image
                 Frame theFrame = (Frame)sender;
                 ChapterViewModel a = theFrame.BindingContext as ChapterViewModel;
                 Navigation.PushAsync(new ChapterPage(a));
-
-                // now you have a reference to the image
             };
+            /* for (int i = List.Chapters.Count - 1; i > -1; i--)
+             {
+                 ChapterViewModel c = List.Chapters[i];
+                 Frame frame = new Frame { BorderColor = Color.Accent, BindingContext = c };
+                 frame.Content = new Label
+                 {
+                     Text = c.Title,
+                     HorizontalTextAlignment = TextAlignment.Center
+                 };
+                 frame.GestureRecognizers.Add(tapGestureRecognizer);
+                 if (chapcounter % 2 == 0)
+                 {
+                     grid.RowDefinitions.Add(new RowDefinition { Height = 200 });
+                 }
+                 grid.Children.Add(frame, chapcounter % 2, chapcounter / 2);
+                 chapcounter++;
+             }*/
+            grid.Children.Clear();
+            chapcounter = 0;
+            if (grid.RowDefinitions.Count+1 < (App.Database2.GetItems().ToList().Count) / 2)
+            {
+                grid.RowDefinitions.Add(new RowDefinition { Height = 200 });
+            }
             for (int i = List.Chapters.Count - 1; i > -1; i--)
             {
-                ChapterViewModel c = List.Chapters[i];
-                Frame frame = new Frame { BorderColor = Color.Accent, BindingContext = c };
-                frame.Content = new Label
-                {
-                    Text = c.Title
-                };
-                frame.GestureRecognizers.Add(tapGestureRecognizer);
-                if (chapcounter % 2 == 0)
+                if (i%2 == 0)
                 {
                     grid.RowDefinitions.Add(new RowDefinition { Height = 200 });
                 }
+                ChapterViewModel c = List.Chapters[i];
+                Label title = new Label() { Text = c.Title };
+                Button delBut = new Button { ImageSource = "trashcanimg.jpg", BorderWidth = 0, HeightRequest = 40, WidthRequest = 40, HorizontalOptions = LayoutOptions.Center, CornerRadius = 0, BackgroundColor = Color.White };
+                delBut.HeightRequest = 40;
+                RelativeLayout layout = new RelativeLayout() { Margin = 0 };
+                Frame frame = new Frame { BorderColor = Color.Accent, BindingContext = c, Margin = 0 };
+                frame.Content = layout;
+                layout.Children.Add(title,
+           Constraint.RelativeToParent((parent) =>
+           {
+               return parent.Width - 90;  // установка координаты X
+                       }),
+        Constraint.RelativeToParent((parent) =>
+        {
+            return parent.Height - 150; // установка координаты Y
+                    }),
+        Constraint.Constant(100), // установка ширины
+        Constraint.Constant(100)  // установка высоты
+        );
+                layout.Children.Add(delBut,
+                   Constraint.RelativeToParent((parent) =>
+                   {
+                       return parent.Width - 70;  // установка координаты X
+                       }),
+                Constraint.RelativeToParent((parent) =>
+                {
+                    return parent.Height - 70; // установка координаты Y
+                    }),
+                Constraint.Constant(100), // установка ширины
+                Constraint.Constant(100)  // установка высоты
+                );
+                frame.GestureRecognizers.Add(tapGestureRecognizer);
+                if (chapcounter % 2 == 0)
+                {
+
+                }
+                delBut.HeightRequest = 40;
                 grid.Children.Add(frame, chapcounter % 2, chapcounter / 2);
                 chapcounter++;
             }
@@ -91,19 +140,49 @@ namespace meta.Views
             {
                 grid.Children.Clear();
                 chapcounter = 0;
+                if (grid.RowDefinitions.Count+1 < (App.Database2.GetItems().ToList().Count )/2)
+                {
+                    grid.RowDefinitions.Add(new RowDefinition { Height = 200 });
+                }
                 for (int i = List.Chapters.Count - 1; i > -1; i--)
                 {
                     ChapterViewModel c = List.Chapters[i];
-                    Frame frame = new Frame { BorderColor = Color.Accent, BindingContext = c };
-                    frame.Content = new Label
+                    Label title = new Label() { Text = c.Title };
+                    Button delBut = new Button { ImageSource = "trashcanimg.jpg", BorderWidth = 0, HeightRequest = 40, WidthRequest = 40, HorizontalOptions = LayoutOptions.Center, CornerRadius = 0, BackgroundColor = Color.White};
+                    delBut.HeightRequest = 40;
+                    RelativeLayout layout = new RelativeLayout() { Margin = 0};
+                    Frame frame = new Frame { BorderColor = Color.Accent, BindingContext = c, Margin = 0 };
+                    frame.Content = layout;
+                            layout.Children.Add(title,
+                       Constraint.RelativeToParent((parent) =>
                     {
-                        Text = c.Title
-                    };
+                        return parent.Width - 90;  // установка координаты X
+                    }),
+                    Constraint.RelativeToParent((parent) =>
+                    {
+                        return parent.Height - 150; // установка координаты Y
+                    }),
+                    Constraint.Constant(100), // установка ширины
+                    Constraint.Constant(100)  // установка высоты
+                    );
+                    layout.Children.Add(delBut,
+                       Constraint.RelativeToParent((parent) =>
+                       {
+                           return parent.Width - 70;  // установка координаты X
+                       }),
+                    Constraint.RelativeToParent((parent) =>
+                    {
+                        return parent.Height - 70; // установка координаты Y
+                    }),
+                    Constraint.Constant(100), // установка ширины
+                    Constraint.Constant(100)  // установка высоты
+                    );
                     frame.GestureRecognizers.Add(tapGestureRecognizer);
                     if (chapcounter % 2 == 0)
                     {
-                        grid.RowDefinitions.Add(new RowDefinition { Height = 200 });
+                        
                     }
+                    delBut.HeightRequest = 40;
                     grid.Children.Add(frame, chapcounter % 2, chapcounter / 2);
                     chapcounter++;
                 }

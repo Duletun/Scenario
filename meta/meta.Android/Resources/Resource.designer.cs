@@ -8375,6 +8375,9 @@ namespace meta.Droid
 			// aapt resource value: 0x7F07007A
 			public const int tooltip_frame_light = 2131165306;
 			
+			// aapt resource value: 0x7F07007B
+			public const int trashcanimg = 2131165307;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
