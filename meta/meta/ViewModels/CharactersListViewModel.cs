@@ -30,33 +30,16 @@ namespace meta.ViewModels
         {
             Characters = new ObservableCollection<CharacterViewModel>();
             List<CharacterViewModel> charlik = new List<CharacterViewModel>();
-            //try
-            // {
             charlik = (App.Database.GetItems().ToList()).ConvertAll(x => new CharacterViewModel
             {
                 Character = x,
                 ListViewModel = this,
                 IsCreated = true
             });
-            //  {
-            //   Character = x,
-            //    IsCreated = true,
-            //      Name = x.Name,
-            //    Description = x.Description,
-            //     ImagePath = x.ImagePath
-            //}) ;
             foreach (CharacterViewModel c in charlik)
             {
                 this.Characters.Add(c);
             }
-            //CharacterViewModel aqq = new CharacterViewModel { Character = new Character { Name = "asdas", Description = "asdasd", }, ListViewModel = this };
-            //this.Characters.Add(aqq);
-     
-
-          //  catch
-            //{
-
-           // }
             CreateCharacterCommand = new Command(CreateCharacter);
             DeleteCharacterCommand = new Command(DeleteCharacter);
             SaveCharacterCommand = new Command(SaveCharacter);

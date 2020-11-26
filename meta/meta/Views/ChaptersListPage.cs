@@ -62,6 +62,7 @@ namespace meta.Views
                  grid.Children.Add(frame, chapcounter % 2, chapcounter / 2);
                  chapcounter++;
              }*/
+            Console.WriteLine("Hello, world!");
             grid.Children.Clear();
             chapcounter = 0;
             if (grid.RowDefinitions.Count+1 < (App.Database2.GetItems().ToList().Count) / 2)

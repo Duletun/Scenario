@@ -9,10 +9,12 @@ namespace meta
 {
     public partial class App : Application
     {
+        public const string DATABASE_NAME3 = "notes.db";
         public const string DATABASE_NAME2 = "chapters.db";
         public const string DATABASE_NAME = "characters.db";
         public static CharacterRepository database;
         public static ChapterRepository database2;
+        public static NoteRepository database3;
         public static CharacterRepository Database
         {
             get
@@ -37,14 +39,28 @@ namespace meta
             }
 
         }
+        public static NoteRepository Database3
+        {
+            get
+            {
+                if (database3 == null)
+                {
+                    database3 = new NoteRepository(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DATABASE_NAME3));
+                }
+                return database3;
+            }
+
+        }
         public App()
         {
             var tabbedPage = new TabbedPage();
             NavigationPage charsp = new NavigationPage(new CharactersListPage());
             NavigationPage.SetHasNavigationBar(charsp, false);
             tabbedPage.Children.Add(charsp);
-            charsp.Title = "Персонажи";
+            charsp.Title = "Герои";
             tabbedPage.Children.Add(new NavigationPage(new ChaptersListPage()) { Title = "Главы" });
+            tabbedPage.Children.Add(new NavigationPage(new TimelinesListPage()) { Title = "Схемы" });
+            tabbedPage.Children.Add(new NavigationPage(new NotesListPage()) { Title = "Заметки" });
 
             MainPage = tabbedPage;
             //MainPage = new TabbedMain();
