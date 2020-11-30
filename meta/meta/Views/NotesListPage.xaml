@@ -10,10 +10,14 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Удалить"
+                    Command="{Binding Path=ListViewModel.DeleteNoteCommand}" CommandParameter="{Binding}" />
+                        </ViewCell.ContextActions>
                         <ViewCell.View>
                             <StackLayout>
-                                <Label Text="{Binding Title}" FontSize="Medium" />
-                                <Label Text="{Binding Text}" FontSize="Small" />
+                                <Label Text="{Binding title}" FontSize="Medium" TextColor="Black" />
+                                <Label Text="{Binding text}" FontSize="Small" />
                             </StackLayout>
                         </ViewCell.View>
                     </ViewCell>

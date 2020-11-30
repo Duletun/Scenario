@@ -19,16 +19,17 @@ namespace meta.Views
         }
         protected override bool OnBackButtonPressed()
         {
-            if (!String.IsNullOrEmpty(ViewModel.Text))
+            if (!String.IsNullOrEmpty(ViewModel.Text) )
             {
                 if (ViewModel.IsCreated == true)
                 {
-                    //App.Database3.UpdateItem(ViewModel.Note);
+                    App.Database3.UpdateItem(ViewModel.Note);
                 }
                 else
                 {
                     this.ViewModel.lvm.Notes.Add(ViewModel);
                     App.Database3.SaveItem(ViewModel.Note);
+                    ViewModel.IsCreated = true;
                 }
             }
             Navigation.PopAsync();

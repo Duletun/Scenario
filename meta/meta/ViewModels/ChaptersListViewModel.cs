@@ -73,7 +73,7 @@ namespace meta.ViewModels
 
         private void CreateChapter()
         {
-            Navigation.PushAsync(new ChapterPage(new ChapterViewModel() { ListViewModel = this }));
+            Navigation.PushAsync(new ChapterPage(new ChapterViewModel() { ListViewModel = this, IsCreated = false }));
         }
         private void BackSave(object chapterObject)
         {

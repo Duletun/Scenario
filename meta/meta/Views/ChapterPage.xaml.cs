@@ -26,16 +26,20 @@ namespace meta.Views
         {
             if (!String.IsNullOrEmpty(ViewModel.Text))
             {
-                if(ViewModel.IsCreated == true)
+                Console.WriteLine("tTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTrue");
+                if (ViewModel.IsCreated == true)
                 {
+                    Console.WriteLine("True");
                     App.Database2.UpdateItem(ViewModel.Chapter);
-                    ViewModel.lvm.NeedToReload = true; /*Убрать потом*/
+                    //ViewModel.lvm.NeedToReload = true; /*Убрать потом*/
                 }
                 else
                 {
+                    Console.WriteLine("Frue");
                     this.ViewModel.lvm.Chapters.Add(ViewModel);
                     App.Database2.SaveItem(ViewModel.Chapter);
                     ViewModel.lvm.NeedToReload = true;
+                    ViewModel.IsCreated = true;
                 }
             }
             Navigation.PopAsync();
