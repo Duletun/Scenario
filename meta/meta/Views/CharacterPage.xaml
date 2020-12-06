@@ -9,6 +9,35 @@
             <Entry Text="{Binding Name}" FontSize="Medium" />
             <Label Text="Иконка" />
             <Button ImageSource="{Binding ImagePath}" HorizontalOptions="Start"  WidthRequest="82" HeightRequest="82" BorderWidth="1" Command="{Binding SwitchImageCommand}" CommandParameter="{Binding}"/>
+            <Label Text="Характеристики" />
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="plusParamButton" Text="+" Clicked="plusParamShow"  WidthRequest="55"/>
+                <Entry x:Name="paramName" IsVisible="false" WidthRequest="190"/>
+                <Button x:Name="addParam"  Text="✔" IsVisible="false" Command="{Binding CreateParamCommand}" CommandParameter="{Binding Source={x:Reference Name=paramName}, Path=Text}" WidthRequest="55" Clicked="plusParamHide"/>
+            </StackLayout>
+            <ListView x:Name="paramsList" ItemsSource="{Binding Params}"
+               HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Вверх"
+                    Command="{Binding Path=ListViewModel.MoveToTopCommand}" CommandParameter="{Binding}" />
+                                <MenuItem Text="Вниз"
+                    Command="{Binding Path=ListViewModel.MoveToBottomCommand}" CommandParameter="{Binding}"/>
+                                <MenuItem Text="Удалить"
+                    Command="{Binding Path=ListViewModel.RemoveCommand}" CommandParameter="{Binding}"/>
+                            </ViewCell.ContextActions>
+                            <ViewCell.View>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Name}" FontSize="Medium" WidthRequest="120"/>
+                                    <Slider Minimum="0" Maximum="100" Value="{Binding Value}" WidthRequest="250"/>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <Label Text="Описание" />
             <Editor Text="{Binding Description}" FontSize="Medium" BackgroundColor="#e3e3e3" HeightRequest="250" />
         </StackLayout>

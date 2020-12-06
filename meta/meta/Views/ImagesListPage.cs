@@ -21,6 +21,7 @@ namespace meta.Views
         }
         public ImagesListPage(CharacterViewModel cm)
         {
+            NavigationPage.SetHasNavigationBar(this, false);
             Character = cm;
             Grid grid = new Grid
             {   Margin = 15,

@@ -7,6 +7,7 @@ using meta.Models;
 using System.Windows.Input;
 using meta.Views;
 using System.Linq;
+using System.Collections.ObjectModel;
 using SQLite;
 
 namespace meta.ViewModels
@@ -14,19 +15,60 @@ namespace meta.ViewModels
     public class CharacterViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        public ObservableCollection<ParamViewModel> Params { get; set; }
         CharactersListViewModel lvm;
         public INavigation Navigation { get; set; }
+        public ICommand CreateParamCommand { set; get; }
         public ICommand SwitchImageCommand { protected set; get; }
+        public ICommand MoveToTopCommand { protected set; get; }
+        public ICommand MoveToBottomCommand { protected set; get; }
+        public ICommand RemoveCommand { protected set; get; }
         public Character Character { get;  set; }
         //static int a = 0;
         public CharacterViewModel()
         {
+            MoveToTopCommand = new Command(MoveToTop);
+            MoveToBottomCommand = new Command(MoveToBottom);
+            RemoveCommand = new Command(Remove);
+            CreateParamCommand = new Command(CreateParam);
+            SwitchImageCommand = new Command(SwitchImage);
             if (Character == null)
             {
                 Character = new Character();
             }
-
-            SwitchImageCommand = new Command(SwitchImage);
+            Params = new ObservableCollection<ParamViewModel>();
+            /*
+            List<Param> paramss = new List<Param>();
+            paramss = App.DatabaseParam.GetItems().ToList();
+            System.Console.WriteLine("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
+            foreach (Param c in paramss)
+            {
+                System.Console.WriteLine("Trevogasdasdasdasdasda");
+                System.Console.WriteLine(c.Name);
+                System.Console.WriteLine(c.atach);
+                System.Console.WriteLine(Character.Id);
+                if (c.atach == Character.Id)
+                {
+                    System.Console.WriteLine("Trevoga");
+                    System.Console.WriteLine(c.Name);
+                    System.Console.WriteLine(Character.Id);
+                    this.Params.Add(c);
+                }
+            }*/
+        }
+        private void CreateParam(object name)
+        {
+            ParamViewModel AddedPar = new ParamViewModel() { Param = new Param { atach = Character.Id, Name = name.ToString(), Value = 50 }, ListViewModel = this };
+            Params.Add(AddedPar);
+            App.DatabaseParam.SaveItem(AddedPar.Param);
+            /*List<Param> Qparamss = new List<Param>();
+            Qparamss = App.DatabaseParam.GetItems().ToList();
+            foreach (Param c in Qparamss)
+            {
+                System.Console.WriteLine(c.Name);
+                System.Console.WriteLine(c.atach);
+                System.Console.WriteLine(Character.Id);
+            }*/
         }
         private void SwitchImage( object characterObject)
         {
@@ -98,6 +140,35 @@ namespace meta.ViewModels
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
+        }
+        private void MoveToTop(object paramObj)
+        {
+            ParamViewModel param = paramObj as ParamViewModel;
+            if (param == null) return;
+            int oldIndex = Params.IndexOf(param);
+            if (oldIndex > 0)
+                Params.Move(oldIndex, oldIndex - 1);
+        }
+        private void MoveToBottom(object paramObj)
+        {
+            ParamViewModel param = paramObj as ParamViewModel;
+            if (param == null) return;
+            int oldIndex = Params.IndexOf(param);
+            if (oldIndex < Params.Count - 1)
+                Params.Move(oldIndex, oldIndex + 1);
+        }
+        private void Remove(object paramObj)
+        {
+            ParamViewModel param = paramObj as ParamViewModel;
+            if (param == null)
+            {
+                System.Console.WriteLine("ParamisNullParamisNullParamisNullParamisNullParamisNullParamisNullParamisNullParamisNullParamisNull");
+                return;
+            }
+            System.Console.WriteLine("ParamisNOTNullParamisNOTNullParamisNOTNullParamisNOTNullParamisNOTNullParamisNOTNull");
+
+            Params.Remove(param);
+            App.DatabaseParam.DeleteItem(param.Param.Id);
         }
     }
 }

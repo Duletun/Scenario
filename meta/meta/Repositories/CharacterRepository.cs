@@ -5,6 +5,8 @@ using SQLite;
 using meta.Models;
 using meta.ViewModels;
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
+
 namespace meta
 {   
     public class CharacterRepository

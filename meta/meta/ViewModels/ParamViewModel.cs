@@ -12,11 +12,11 @@ using System.Collections.ObjectModel;
 
 namespace meta.ViewModels
 {
-    public class ChapterViewModel : INotifyPropertyChanged
+    public class ParamViewModel : INotifyPropertyChanged
     {
-        public ChaptersListViewModel lvm;
+        public CharacterViewModel lvm;
         public bool IsVisible { get; set; } = false;
-        public ChaptersListViewModel ListViewModel
+        public CharacterViewModel ListViewModel
         {
             get { return lvm; }
             set
@@ -30,47 +30,48 @@ namespace meta.ViewModels
         }
         public event PropertyChangedEventHandler PropertyChanged;
         public INavigation Navigation { get; set; }
-        public Chapter Chapter { get; set; }
+        public Param Param { get; set; }
         //static int a = 0;
-        public ChapterViewModel()
+        public ParamViewModel()
         {
-            if (Chapter == null)
+            if (Param == null)
             {
-                Chapter = new Chapter();
+                Param = new Param();
             }
         }
-        public string Title
+        public int Value
         {
-            get { return Chapter.Title; }
+            get { return Param.Value; }
             set
             {
-                if (Chapter.Title != value)
+                if (Param.Value != value)
                 {
-                    Chapter.Title = value;
-                    OnPropertyChanged("Title");
+                    Param.Value = value;
+                    OnPropertyChanged("Value");
                 }
             }
         }
-        public string Text
+        public string Name
         {
-            get { return Chapter.Text; }
+            get { return Param.Name; }
             set
             {
-                if (Chapter.Text != value)
+                if (Param.Name != value)
                 {
-                    Chapter.Text = value;
-                    OnPropertyChanged("Text");
+                    Param.Name = value;
+                    OnPropertyChanged("Name");
                 }
             }
         }
-        public int Words
+        public int atach
         {
-            get { return Chapter.Words; }
+            get { return Param.atach; }
             set
             {
-                if (Chapter.Words != value)
+                if (Param.atach != value)
                 {
-                    OnPropertyChanged("Words");
+                    Param.atach = value;
+                    OnPropertyChanged("atach");
                 }
             }
         }
@@ -79,8 +80,7 @@ namespace meta.ViewModels
         {
             get
             {
-                return ((!string.IsNullOrEmpty(Title.Trim())) ||
-                    (!string.IsNullOrEmpty(Text.Trim())));
+                return !string.IsNullOrEmpty(Name.Trim());
             }
         }
         protected void OnPropertyChanged(string propName)

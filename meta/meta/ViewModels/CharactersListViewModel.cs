@@ -36,8 +36,23 @@ namespace meta.ViewModels
                 ListViewModel = this,
                 IsCreated = true
             });
+            List<ParamViewModel> paramss = new List<ParamViewModel>();
+            paramss = (App.DatabaseParam.GetItems().ToList()).ConvertAll(x => new ParamViewModel
+            {
+                Param = x,
+                IsCreated = true
+            });
             foreach (CharacterViewModel c in charlik)
             {
+                /*До этого парамы гетились в пейдже, это попытка загетить их один раз
+                 на этапе загечивания карактеров в лист*/
+                    foreach (ParamViewModel p in paramss)
+                    {
+                        if (p.Param.atach == c.Character.Id)
+                        {
+                            c.Params.Add(p);
+                        }
+                    }
                 this.Characters.Add(c);
             }
             CreateCharacterCommand = new Command(CreateCharacter);
@@ -72,15 +87,30 @@ namespace meta.ViewModels
         {
             Navigation.PushAsync(new CharacterPage(new CharacterViewModel() { ListViewModel = this }));
         }
-        private void BackSave(object characterObject)
+        private void BackSave(object characterObject)   
         {
+            System.Console.WriteLine("BACKSAVEBACKSAVEBACKSAVEBACKSAVEBACKSAVEBACKSAVEBACKSAVEBACKSAVEBACKSAVEBACKSAVEBACKSAVEBACKSAVEBACKSAVE");
+
             CharacterViewModel character = characterObject as CharacterViewModel;
             {
                 if (!String.IsNullOrEmpty(character.Name))
                 {
                     App.Database.UpdateItem(character.Character);
+                    foreach (ParamViewModel c in character.Params)
+                    {
+                        System.Console.WriteLine("Updated {0}, {1}, {2}", c.Name, c.Value, c.atach);
+                        App.DatabaseParam.UpdateItem(c.Param);
+                    }
                 }
                 Navigation.PopAsync();
+                List<Param> Qparamss = new List<Param>();
+                Qparamss = App.DatabaseParam.GetItems().ToList();
+                foreach (Param c in Qparamss)
+                {
+                    System.Console.WriteLine(c.Name);
+                    System.Console.WriteLine(c.Value);
+                    System.Console.WriteLine(c.atach);
+                }
             }
 
 
@@ -105,8 +135,18 @@ namespace meta.ViewModels
             CharacterViewModel character = characterObject as CharacterViewModel;
             if (character != null)
             {
+
                 Characters.Remove(character);
                 App.Database.DeleteItem(character.Character.Id);
+            }
+            List<Param> paramss = new List<Param>();
+            paramss = App.DatabaseParam.GetItems().ToList();
+            foreach (Param p in paramss)
+            {
+                if (p.atach == character.Character.Id)
+                {
+                    App.DatabaseParam.DeleteItem(p.Id);
+                }
             }
             Back();
         }

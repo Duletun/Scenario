@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using SQLite;
+using meta.Models;
+using System.Collections.ObjectModel;
+
 
 namespace meta.Models
 {

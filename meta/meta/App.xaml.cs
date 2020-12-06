@@ -12,9 +12,11 @@ namespace meta
         public const string DATABASE_NAME3 = "notes.db";
         public const string DATABASE_NAME2 = "chapters.db";
         public const string DATABASE_NAME = "characters.db";
+        public const string DATABASE_NAMEParam = "params.db";
         public static CharacterRepository database;
         public static ChapterRepository database2;
         public static NoteRepository database3;
+        public static ParamRepository databaseParam;
         public static CharacterRepository Database
         {
             get
@@ -48,6 +50,18 @@ namespace meta
                     database3 = new NoteRepository(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DATABASE_NAME3));
                 }
                 return database3;
+            }
+
+        }
+        public static ParamRepository DatabaseParam
+        {
+            get
+            {
+                if (databaseParam == null)
+                {
+                    databaseParam = new ParamRepository(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DATABASE_NAMEParam));
+                }
+                return databaseParam;
             }
 
         }

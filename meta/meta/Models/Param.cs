@@ -5,23 +5,19 @@ using SQLite;
 
 using meta.Models;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
-using Xamarin.Forms;
-using System.ComponentModel;
-using meta.Views;
-using System.Linq;
 
 namespace meta
 {
-    [Table("Chapters")]
-    public class Note
+    [Table("Params")]
+    public class Param
     {
         static int count = 1;
         [PrimaryKey, AutoIncrement, Column("_id")]
         public int Id { get; set; } = count;
-        public string Title { get; set; }
-        public string Text { get; set; }
-        public Note()
+        public int Value { get; set; } = 50;
+        public string Name { get; set; } = "";
+        public int atach { get; set; } = -1;
+        public Param()
         {
             count++;
         }
