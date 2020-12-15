@@ -37,7 +37,7 @@ namespace meta.ViewModels
                 Character = new Character();
             }
             Params = new ObservableCollection<ParamViewModel>();
-            /*
+            
             List<Param> paramss = new List<Param>();
             paramss = App.DatabaseParam.GetItems().ToList();
             System.Console.WriteLine("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
@@ -52,9 +52,9 @@ namespace meta.ViewModels
                     System.Console.WriteLine("Trevoga");
                     System.Console.WriteLine(c.Name);
                     System.Console.WriteLine(Character.Id);
-                    this.Params.Add(c);
+                    this.Params.Add(new ParamViewModel() { Param = c });
                 }
-            }*/
+            }
         }
         private void CreateParam(object name)
         {

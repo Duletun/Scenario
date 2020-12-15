@@ -10,6 +10,9 @@ using meta.ViewModels;
 using System.Windows.Input;
 using System.ComponentModel;
 using meta.Views;
+using Microcharts;
+using SkiaSharp;
+using Entry = Microcharts.ChartEntry;
 
 namespace meta.Views
 {
@@ -17,8 +20,27 @@ namespace meta.Views
     {
         public CharacterViewModel ViewModel { get; private set; }
         public ObservableCollection<Param> arr;
+        public List<Entry> entries;
+        public void RadarAppear()
+        {
+
+        }
         private void SliderChanged(object sender,ValueChangedEventArgs e)
         {
+            ParamViewModel from = (ParamViewModel)sender;
+            for (int q = 0; q < 5; q++)
+            { 
+                if (entries[q].Label == from.Name)
+                {
+                    int val = Convert.ToInt32(e);
+                    entries[q] = new Entry(val) {
+                        Label = entries[q].Label,
+                        ValueLabel = entries[q].ValueLabel.ToString(),
+                        Color = entries[q].Color
+                    };
+                }
+            }
+
         }
         private void plusParamShow(object sender, System.EventArgs e)
         {
@@ -33,7 +55,34 @@ namespace meta.Views
         }
         public CharacterPage(CharacterViewModel vm)
         {
+            ViewModel = vm;
             vm.Navigation = this.Navigation;
+            entries = new List<Entry>();
+            for (int o = 0; o <5; o++)
+            {
+                if (o < ViewModel.Params.Count)
+                {
+                    System.Console.WriteLine("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
+                    Param parad = ViewModel.Params[o].Param;
+                    SKColor color = new SKColor();
+                    if (o == 0) color = SKColor.Parse("#2c3e50");
+                    if (o == 1) color = SKColor.Parse("#77d065");
+                    if (o == 2) color = SKColor.Parse("#b455b6");
+                    if (o == 3) color = SKColor.Parse("#3498db");
+                    if (o == 4) color = SKColor.Parse("#DC143C");
+                    double dabl = parad.Value / 4;
+                    int integer = Convert.ToInt32(dabl);
+                    entries.Add(new Entry(integer)
+                    {
+                        Label = parad.Name,
+                        ValueLabel = parad.Value.ToString(),
+                        Color = color
+                    }) ;
+
+                }
+            }
+
+            var chart = new RadarChart() { Entries = entries };
             InitializeComponent();
             if (vm.IsCreated == true)
             {
@@ -45,7 +94,8 @@ namespace meta.Views
                 delButton.IsVisible = false;
                 saveButton.IsVisible = false;
             }
-            ViewModel = vm;
+            chart.LabelTextSize = 30;
+            this.chartView.Chart = chart;
             /*List<Param> paramss = new List<Param>();
             paramss = App.DatabaseParam.GetItems().ToList();
             if (ViewModel.Params.Count == 0)

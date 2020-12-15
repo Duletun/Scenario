@@ -1,15 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="meta.Views.CharacterPage" Title="Информация о персонаже"
-             NavigationPage.HasNavigationBar = "false">
+<ContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+     xmlns:local="clr-namespace:meta"
+     x:Class="meta.Views.CharacterPage"
+     NavigationPage.HasNavigationBar = "false">
     <StackLayout>
         <StackLayout x:Name="characterStack">
             <Label x:Name="q" Text="Имя" />
             <Entry Text="{Binding Name}" FontSize="Medium" />
-            <Label Text="Иконка" />
-            <Button ImageSource="{Binding ImagePath}" HorizontalOptions="Start"  WidthRequest="82" HeightRequest="82" BorderWidth="1" Command="{Binding SwitchImageCommand}" CommandParameter="{Binding}"/>
-            <Label Text="Характеристики" />
+            <StackLayout Orientation="Horizontal">
+                <StackLayout>
+                    <Label Text="Иконка" />
+                    <Button ImageSource="{Binding ImagePath}" HorizontalOptions="Start"  WidthRequest="82" HeightRequest="82" BorderWidth="1" Command="{Binding SwitchImageCommand}" CommandParameter="{Binding}"/>
+                    <Label Text="Характеристики" />
+                </StackLayout>
+                <microcharts:ChartView x:Name="chartView" WidthRequest="200" BackgroundColor="Gray"/>
+            </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Button x:Name="plusParamButton" Text="+" Clicked="plusParamShow"  WidthRequest="55"/>
                 <Entry x:Name="paramName" IsVisible="false" WidthRequest="190"/>
