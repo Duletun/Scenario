@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    x:Class="meta.Views.GridPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:converters="clr-namespace:meta.Converters;assembly=meta"
+    xmlns:customViews="clr-namespace:Sharpnado.Presentation.Forms.CustomViews;assembly=Sharpnado.TaskLoaderView"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:sho="http://sharpnado.com"
+    xmlns:viewModels="clr-namespace:meta.ViewModels;assembly=meta"
+    xmlns:views="clr-namespace:meta.Views;assembly=meta"
+    xmlns:xamEffects="clr-namespace:XamEffects;assembly=XamEffects"
+    BackgroundColor="{StaticResource DarkerSurface}">
+
+    <d:ContentPage.BindingContext>
+        <viewModels:GridPageViewModel />
+    </d:ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="SegmentedTabStyle" TargetType="sho:UnderlinedTabItem">
+                <Setter Property="SelectedTabColor" Value="{StaticResource Accent}" />
+                <Setter Property="LabelSize" Value="16" />
+                <Setter Property="UnselectedLabelColor" Value="{StaticResource TextSecondaryDarkColor}" />
+            </Style>
+
+           
+
+            <DataTemplate x:Key="VerticalDudeTemplate">
+                <sho:DraggableViewCell x:Name="DraggableViewCell">
+                    <ContentView>
+                         
+                        <views:SillyListCell
+                                Margin="0"
+                                BackgroundColor="#00000000"
+                                CornerRadius="0">
+                            <views:SillyListCell.Triggers>
+                                <DataTrigger
+                                        Binding="{Binding Source={x:Reference DraggableViewCell}, Path=IsDragAndDropping}"
+                                        TargetType="views:SillyListCell"
+                                        Value="True">
+                                    <Setter Property="BackgroundColor" Value="#00000000" />
+                                </DataTrigger>
+                            </views:SillyListCell.Triggers>
+                        </views:SillyListCell>
+
+                    </ContentView>
+                </sho:DraggableViewCell>
+            </DataTemplate>
+
+            <views:DudeTemplateSelector
+                x:Key="DudeTemplateSelector"
+                VerticalTemplate="{StaticResource VerticalDudeTemplate}" />
+
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    
+    
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+            <customViews:TaskLoaderView
+                Grid.Row="1"
+                Style="{StaticResource SillyTaskLoader}"
+                VerticalOptions="FillAndExpand"
+                TaskLoaderNotifier="{Binding SillyPeopleLoaderNotifier}">
+                <RefreshView
+                    Command="{Binding SillyPeopleLoaderNotifier.RefreshCommand}"
+                    IsRefreshing="{Binding SillyPeopleLoaderNotifier.ShowRefresher}"
+                    RefreshColor="{StaticResource Accent}">
+                    <sho:HorizontalListView
+                        x:Name="HorizontalListView"
+                        CollectionPadding="0,0,0,7"
+                        CurrentIndex="{Binding CurrentIndex}"
+                        EnableDragAndDrop="True"
+                        DragAndDropEndedCommand="{Binding OnDragAndDropEndCommand}"
+                        InfiniteListLoader="{Binding SillyPeoplePaginator}"
+                        ItemHeight="120"
+                        ListLayout="Vertical"
+                        ItemTemplate="{StaticResource DudeTemplateSelector}"
+                        ItemWidth="120"
+                        ItemsSource="{Binding SillyPeople}"
+                        ScrollBeganCommand="{Binding OnScrollBeginCommand}"
+                        ScrollEndedCommand="{Binding OnScrollEndCommand}"
+                        TapCommand="{Binding TapCommand}"
+                        />
+
+                    <!--  HorizontalListView Logo  -->
+                    <!--<sho:HorizontalListView
+                        x:Name="HorizontalListView"
+                        CollectionPadding="10,30,10,75"
+                        CurrentIndex="{Binding CurrentIndex}"
+                        EnableDragAndDrop="True"
+                        InfiniteListLoader="{Binding SillyPeoplePaginator}"
+                        ItemHeight="120"
+                        ItemWidth="120"
+                        ItemsSource="{Binding Logo}"
+                        ListLayout="Linear"
+                        TapCommand="{Binding TapCommand}">
+                        <sho:HorizontalListView.ItemTemplate>
+                            <DataTemplate>
+                                <sho:DraggableViewCell x:Name="DraggableViewCell">
+                                    <ContentView>
+                                        <sho:Shadows
+                                            x:Name="Shadow"
+                                            CornerRadius="10"
+                                            Shades="{Binding ShadowResourceName, Converter={converters:StringToResource}}">
+                                            <pancakeView:PancakeView
+                                                Margin="16,13,16,13"
+                                                Padding="0"
+                                                CornerRadius="10"
+                                                BackgroundGradientStartPoint="0,0"
+                                                BackgroundGradientEndPoint="1,1">
+                                                <pancakeView:PancakeView.Triggers>
+                                                    <DataTrigger
+                                                        Binding="{Binding Source={x:Reference DraggableViewCell}, Path=IsDragAndDropping}"
+                                                        TargetType="pancakeView:PancakeView"
+                                                        Value="True">
+                                                        <Setter Property="BackgroundColor" Value="{StaticResource DarkSurface}" />
+                                                    </DataTrigger>
+                                                </pancakeView:PancakeView.Triggers>
+                                                <pancakeView:PancakeView.BackgroundGradientStops>
+                                                    <pancakeView:GradientStopCollection>
+                                                        <pancakeView:GradientStop Offset="0.1" Color="#3a3a3a" />
+                                                        <pancakeView:GradientStop Offset="0.9" Color="#2b2b2b" />
+                                                    </pancakeView:GradientStopCollection>
+                                                </pancakeView:PancakeView.BackgroundGradientStops>
+                                                <Label
+                                                    Style="{StaticResource TextHeadline}"
+                                                    Margin="0,-14,0,0"
+                                                    HorizontalOptions="Center"
+                                                    VerticalOptions="Center"
+                                                    FontAttributes="Bold"
+                                                    FontSize="90"
+                                                    Text="{Binding Text}"
+                                                    TextColor="{Binding TextColor}" />
+                                            </pancakeView:PancakeView>
+                                        </sho:Shadows>
+                                    </ContentView>
+                                </sho:DraggableViewCell>
+                            </DataTemplate>
+                        </sho:HorizontalListView.ItemTemplate>
+                    </sho:HorizontalListView>-->
+
+                </RefreshView>
+            </customViews:TaskLoaderView>
+
+            <sho:Shadows Shades="{StaticResource DarkBottomShadow}">
+                <StackLayout
+                    BackgroundColor="{StaticResource DarkSurface}"
+                    Orientation="Vertical"
+                    HorizontalOptions="FillAndExpand" 
+                    Spacing="0">
+                    <StackLayout.Padding>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="iOS">20, 60, 20, 20</On>
+                            <On Platform="Android">15</On>
+                        </OnPlatform>
+                    </StackLayout.Padding>
+
+                    
+                    <Button
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"   
+                                Padding="0"
+                                BackgroundColor="#1b97f3"
+                                FontSize="15"
+                                TextColor="#FFFFFF"
+                                Command="{Binding OnSillyDudeAddedCommand}"
+                                Text="Добавить точку" />
+                </StackLayout>
+
+            </sho:Shadows>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

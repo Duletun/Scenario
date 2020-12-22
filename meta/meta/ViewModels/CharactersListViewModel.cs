@@ -31,7 +31,7 @@ namespace meta.ViewModels
             Characters = new ObservableCollection<CharacterViewModel>();
             List<CharacterViewModel> charlik = new List<CharacterViewModel>();
             charlik = (App.Database.GetItems().ToList()).ConvertAll(x => new CharacterViewModel
-            {
+            {  
                 Character = x,
                 ListViewModel = this,
                 IsCreated = true

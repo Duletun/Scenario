@@ -103,15 +103,15 @@ namespace meta.ViewModels
                 }
             }
         }
-        public string ImagePath
+        public string CharImagePath
         {
-            get { return Character.ImagePath; }
+            get { return Character.CharImagePath; }
             set
             {
-                if (Character.ImagePath != value)
+                if (Character.CharImagePath != value)
                 {
-                    Character.ImagePath = value;
-                    OnPropertyChanged("ImagePath");
+                    Character.CharImagePath = value;
+                    OnPropertyChanged("CharImagePath");
                 }
             }
         }

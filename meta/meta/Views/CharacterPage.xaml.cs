@@ -94,6 +94,8 @@ namespace meta.Views
                 delButton.IsVisible = false;
                 saveButton.IsVisible = false;
             }
+
+
             chart.LabelTextSize = 30;
             this.chartView.Chart = chart;
             /*List<Param> paramss = new List<Param>();

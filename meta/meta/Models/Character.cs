@@ -16,7 +16,7 @@ namespace meta.Models
 
         public int Id { get; set; } = count;
         public string Name { get; set; }
-        public string ImagePath { get; set; } = "guyimg.jpg";
+        public string CharImagePath { get; set; } = "guyimg.jpg";
         public string Description { get; set; }
         public Character()
         {

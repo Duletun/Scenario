@@ -7,20 +7,23 @@
      NavigationPage.HasNavigationBar = "false">
     <StackLayout>
         <StackLayout x:Name="characterStack">
-            <Label x:Name="q" Text="Имя" />
+            <Label x:Name="q" Text="Имя" FontSize="Medium" TextColor="Black"/>
             <Entry Text="{Binding Name}" FontSize="Medium" />
             <StackLayout Orientation="Horizontal">
                 <StackLayout>
-                    <Label Text="Иконка" />
-                    <Button ImageSource="{Binding ImagePath}" HorizontalOptions="Start"  WidthRequest="82" HeightRequest="82" BorderWidth="1" Command="{Binding SwitchImageCommand}" CommandParameter="{Binding}"/>
-                    <Label Text="Характеристики" />
+                    <Label Text="Иконка" FontSize="Medium" TextColor="Black"/>
+                    <Button ImageSource="{Binding CharImagePath}" HorizontalOptions="Start"  WidthRequest="82" HeightRequest="82" BorderWidth="1" Command="{Binding SwitchImageCommand}" CommandParameter="{Binding}"/>
+                    
                 </StackLayout>
-                <microcharts:ChartView x:Name="chartView" WidthRequest="200" BackgroundColor="Gray"/>
+                <microcharts:ChartView x:Name="chartView" WidthRequest="325" HeightRequest="150" BackgroundColor="Gray"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Button x:Name="plusParamButton" Text="+" Clicked="plusParamShow"  WidthRequest="55"/>
-                <Entry x:Name="paramName" IsVisible="false" WidthRequest="190"/>
-                <Button x:Name="addParam"  Text="✔" IsVisible="false" Command="{Binding CreateParamCommand}" CommandParameter="{Binding Source={x:Reference Name=paramName}, Path=Text}" WidthRequest="55" Clicked="plusParamHide"/>
+            <StackLayout>
+                <Label Text="Характеристики" FontSize="Medium" TextColor="Black"/>
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="plusParamButton" Text="+" Clicked="plusParamShow"  WidthRequest="55" HeightRequest="45" BackgroundColor="#1b97f3" TextColor="#FFFFFF"/>
+                    <Entry x:Name="paramName" IsVisible="false" WidthRequest="190"/>
+                    <Button x:Name="addParam"  Text="✔" IsVisible="false" Command="{Binding CreateParamCommand}" CommandParameter="{Binding Source={x:Reference Name=paramName}, Path=Text}" HeightRequest="45" WidthRequest="55" Clicked="plusParamHide" BackgroundColor="#1b97f3" TextColor="#FFFFFF"/>
+                </StackLayout>
             </StackLayout>
             <ListView x:Name="paramsList" ItemsSource="{Binding Params}"
                HasUnevenRows="True">
@@ -38,21 +41,21 @@
                             <ViewCell.View>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding Name}" FontSize="Medium" WidthRequest="120"/>
-                                    <Slider Minimum="0" Maximum="100" Value="{Binding Value}" WidthRequest="250"/>
+                                    <Slider Minimum="0" Maximum="100" Value="{Binding Value}" WidthRequest="250" MaximumTrackColor="Red" MinimumTrackColor="#1b97f3" />
                                 </StackLayout>
                             </ViewCell.View>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Label Text="Описание" />
-            <Editor Text="{Binding Description}" FontSize="Medium" BackgroundColor="#e3e3e3" HeightRequest="250" />
+            <Label Text="Описание" FontSize="Medium" TextColor="Black"/>
+            <Editor Text="{Binding Description}" FontSize="Medium" BackgroundColor="#ACDCFF" HeightRequest="250" PlaceholderColor="White" TextColor="Black" />
         </StackLayout>
         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-            <Button x:Name="addButton" Text="Добавить" Command="{Binding ListViewModel.SaveCharacterCommand}" CommandParameter="{Binding}" IsVisible="true"/>
-            <Button x:Name="delButton" Text="Удалить" Command="{Binding ListViewModel.DeleteCharacterCommand}" CommandParameter="{Binding}" />
-            <Button x:Name="backButton" Text="Назад" Command="{Binding Path=ListViewModel.BackCommand}" CommandParameter="{Binding}"/>
-            <Button x:Name="saveButton" Text="Сохранить" Command="{Binding Path=ListViewModel.BackSaveCommand}" CommandParameter="{Binding}"/>
+            <Button x:Name="addButton" Text="Добавить" Command="{Binding ListViewModel.SaveCharacterCommand}" CommandParameter="{Binding}" IsVisible="true" BackgroundColor="#1b97f3" TextColor="#FFFFFF"/>
+            <Button x:Name="delButton" Text="Удалить" Command="{Binding ListViewModel.DeleteCharacterCommand}" CommandParameter="{Binding}" BackgroundColor="#1b97f3" TextColor="#FFFFFF"/>
+            <Button x:Name="backButton" Text="Назад" Command="{Binding Path=ListViewModel.BackCommand}" CommandParameter="{Binding}" BackgroundColor="#1b97f3" TextColor="#FFFFFF"/>
+            <Button x:Name="saveButton" Text="Сохранить" Command="{Binding Path=ListViewModel.BackSaveCommand}" CommandParameter="{Binding}" BackgroundColor="#1b97f3" TextColor="#FFFFFF"/>
         </StackLayout>
     </StackLayout>
 </ContentPage>

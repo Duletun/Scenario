@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "meta.Android", "meta\meta.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "meta.iOS", "meta\meta.iOS\meta.iOS.csproj", "{EB4AC136-FDA9-435C-AFDB-D91898BCF178}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "meta", "meta\meta\meta.csproj", "{E534E725-A2F5-4E06-9154-BF18C48C9BB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "meta", "meta\meta\meta.csproj", "{E534E725-A2F5-4E06-9154-BF18C48C9BB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,7 +47,6 @@ Global
 		{EB4AC136-FDA9-435C-AFDB-D91898BCF178}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
 		{EB4AC136-FDA9-435C-AFDB-D91898BCF178}.Debug|iPhoneSimulator.Deploy.0 = Debug|iPhoneSimulator
 		{EB4AC136-FDA9-435C-AFDB-D91898BCF178}.Release|Any CPU.ActiveCfg = Release|iPhoneSimulator
-		{EB4AC136-FDA9-435C-AFDB-D91898BCF178}.Release|Any CPU.Build.0 = Release|iPhoneSimulator
 		{EB4AC136-FDA9-435C-AFDB-D91898BCF178}.Release|Any CPU.Deploy.0 = Release|iPhoneSimulator
 		{EB4AC136-FDA9-435C-AFDB-D91898BCF178}.Release|iPhone.ActiveCfg = Release|iPhone
 		{EB4AC136-FDA9-435C-AFDB-D91898BCF178}.Release|iPhone.Build.0 = Release|iPhone
