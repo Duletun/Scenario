@@ -5,8 +5,10 @@
              NavigationPage.HasNavigationBar = "false">
     <StackLayout>
         <StackLayout>
-            <Entry Text="{Binding Title}" FontSize="Large" />
-            <Editor Text="{Binding Text}" FontSize="Medium"  HeightRequest="750" />
+            <Label Text="Заголовок заметки" FontSize="Medium" TextColor="#000000"/>
+            <Entry Text="{Binding Title}" FontSize="Medium" />
+            <Label Text="Содержание" FontSize="Medium" TextColor="#000000" Padding="0,50,0,0"/>
+            <Editor Text="{Binding Text}" FontSize="Medium"  HeightRequest="350" BackgroundColor="#DBEFFD" />
         </StackLayout>
     </StackLayout>
 </ContentPage>

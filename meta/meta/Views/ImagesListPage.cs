@@ -15,7 +15,7 @@ namespace meta.Views
         public void OnButtonClicked(object sender, System.EventArgs e)
         {
             Button button = (Button)sender;
-            this.Character.ImagePath = (((button.ImageSource).ToString()).Substring(5)).Trim();
+            this.Character.CharImagePath = (((button.ImageSource).ToString()).Substring(5)).Trim();
             Navigation.PopAsync();
 
         }

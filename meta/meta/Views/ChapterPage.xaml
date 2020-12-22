@@ -2,11 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="meta.Views.ChapterPage"
-             NavigationPage.HasNavigationBar = "false">
+             NavigationPage.HasNavigationBar = "false"
+             >
     <ContentPage.Content>
         <StackLayout>
-            <Entry Text="{Binding Title}" FontSize="Large" />
-            <Editor Text="{Binding Text}" FontSize="Medium"  HeightRequest="750" />
+            <Label Text="Заголовок" FontSize="Medium" TextColor="#000000"/>
+            <Entry Text="{Binding Title}" FontSize="Medium" />
+            <Label Text="Содежание главы" FontSize="Medium" TextColor="#000000" Padding="0,50,0,0"/>
+            <Editor Text="{Binding Text}" FontSize="Medium"  HeightRequest="350" BackgroundColor="#DBEFFD" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

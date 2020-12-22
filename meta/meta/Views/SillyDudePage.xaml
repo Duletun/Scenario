@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="meta.Views.SillyDudePage"
+    >
+
+    <ContentPage.Content>
+        <StackLayout Spacing="15" Padding="10">
+            <Label Text="Изображение точки схемы" FontSize="Medium" TextColor="#000000"/>
+            <StackLayout Orientation="Horizontal" HeightRequest="100">
+                <Image Source="{Binding ImageUrl}" WidthRequest="100" HeightRequest="100"/>
+                <Button x:Name="plusParamButton" Text="Изменить" Clicked="button_clicked"  WidthRequest="120" HeightRequest="45" BackgroundColor="#1b97f3" TextColor="#FFFFFF"/>
+            </StackLayout>
+
+            <Label Text="Событие" FontSize="Medium" />
+            <Entry Text="{Binding Name}" FontSize="Small" />
+            
+            <Label Text="Детали (дата, место и т.д.)" FontSize="Medium" />
+            <Entry Text="{Binding Role}" FontSize="Small" Margin="0" />
+
+            <Label Text="Содержание" FontSize="Medium" />
+            <Editor Text="{Binding Description}" FontSize="Small"  HeightRequest="300" BackgroundColor="#DBEFFD" />
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button x:Name="addButton" Text="Добавить" Command="{Binding ListViewModel.SaveDudeCommand}" CommandParameter="{Binding}" IsVisible="true" BackgroundColor="#1b97f3" TextColor="#FFFFFF"/>
+                <Button x:Name="delButton" Text="Удалить" Command="{Binding ListViewModel.DeleteDudeCommand}" CommandParameter="{Binding}" BackgroundColor="#1b97f3" TextColor="#FFFFFF" />
+                <Button x:Name="backButton" Text="Назад" Command="{Binding Path=ListViewModel.BackCommand}" CommandParameter="{Binding}" BackgroundColor="#1b97f3" TextColor="#FFFFFF"/>
+                <Button x:Name="saveButton" Text="Сохранить" Command="{Binding Path=ListViewModel.BackSaveCommand}" CommandParameter="{Binding}" BackgroundColor="#1b97f3" TextColor="#FFFFFF"/>
+            </StackLayout>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

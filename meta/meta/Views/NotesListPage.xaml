@@ -2,11 +2,38 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="meta.Views.NotesListPage" Title="Заметки"
+             xmlns:sho="http://sharpnado.com"
              NavigationPage.HasNavigationBar = "false">
     <StackLayout>
-        <Button Text="Добавить" Command="{Binding CreateNoteCommand}" />
+        
+        <sho:Shadows Shades="{StaticResource DarkBottomShadow}">
+            <StackLayout
+                    BackgroundColor="{StaticResource DarkSurface}"
+                    Orientation="Vertical"
+                    HorizontalOptions="FillAndExpand" 
+                    Spacing="0">
+                <StackLayout.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS">20, 60, 20, 20</On>
+                        <On Platform="Android">15</On>
+                    </OnPlatform>
+                </StackLayout.Padding>
+
+
+                <Button
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand"   
+                                Padding="0"
+                                BackgroundColor="#1b97f3"
+                                FontSize="15"
+                                TextColor="#FFFFFF"
+                                Command="{Binding CreateNoteCommand}"
+                                Text="Добавить заметку" />
+            </StackLayout>
+
+        </sho:Shadows>
         <ListView x:Name="notesList" ItemsSource="{Binding Notes}"
-              SelectedItem="{Binding SelectedNote, Mode=TwoWay}" HasUnevenRows="True">
+              SelectedItem="{Binding SelectedNote, Mode=TwoWay}" HasUnevenRows="True" Margin="0,20,0,0">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

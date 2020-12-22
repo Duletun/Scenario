@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Frame
+    x:Class="meta.Views.SillyListCell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:skiaRate="clr-namespace:SkiaRate;assembly=meta"
+    xmlns:viewModels="clr-namespace:meta.ViewModels;assembly=meta"
+    Padding="0">
+
+    <StackLayout
+        x:DataType="viewModels:SillyDudeVmo"
+        Orientation="Horizontal"
+        Spacing="10">
+
+        <StackLayout
+            x:Name="firstStackLayout"
+            Margin="25,0,0,0"
+            HorizontalOptions="Center"
+            Orientation="Vertical"
+            VerticalOptions="Center">
+        
+        <BoxView
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="0,0,0,-7"
+                HeightRequest="31"
+                HorizontalOptions="Center"
+                WidthRequest="5"
+                Color="#FF4081"/>
+
+            <Frame
+            Padding="5"
+            CornerRadius="25"
+            HasShadow="False"
+            HeightRequest="40"
+            IsClippedToBounds="True"
+            VerticalOptions="Start"
+            WidthRequest="40" BackgroundColor="#FF4081">
+            <Frame
+            Padding="0"
+            CornerRadius="25"
+            HasShadow="False"
+            HeightRequest="40"
+            IsClippedToBounds="True"
+            VerticalOptions="Start"
+            WidthRequest="40" BackgroundColor="#FF4081">
+                <Image
+                Aspect="AspectFill"
+                Source="{Binding ImageUrl}"
+                Style="{StaticResource Avatar}" />
+            </Frame>
+            </Frame>
+
+            <BoxView
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="0,-7,0,0"
+                HeightRequest="31"
+                HorizontalOptions="Center"
+                WidthRequest="5"
+                Color="#FF4081"/>
+        </StackLayout>
+
+        <StackLayout
+            Orientation="Vertical"
+            Spacing="0"
+            VerticalOptions="Center">
+
+            <Label
+                Style="{StaticResource TextSubhead}"
+                Text="{Binding Name}"
+                VerticalOptions="Start" />
+
+            <Label Style="{StaticResource TextCaptionSecondary}" Text="{Binding Role}" />
+
+           
+        </StackLayout>
+
+    </StackLayout>
+</Frame>

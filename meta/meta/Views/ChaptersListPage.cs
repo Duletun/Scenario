@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 using meta.ViewModels;
 using meta.Models;
 using System.Security.Cryptography.X509Certificates;
+using Sharpnado.Shades;
 
 namespace meta.Views
 {
@@ -22,7 +23,9 @@ namespace meta.Views
         {
             NavigationPage.SetHasNavigationBar(this, false);
             List = new ChaptersListViewModel() { Navigation = this.Navigation };
-            Button AddButton = new Button() { Text = "Добавить", Command = List.CreateChapterCommand };
+            Thickness labelMargin = new Thickness(15, 15, 15, 0);
+            Button AddButton = new Button() { Text = "Добавить главу", Command = List.CreateChapterCommand, BackgroundColor = Color.FromHex("#1b97f3"), FontSize = 15, TextColor = Color.FromHex("#FFFFFF"), Margin = labelMargin
+            };
             grid = new Grid
             {
                 Margin = 15,
@@ -130,8 +133,10 @@ namespace meta.Views
             }
             ScrollView scrollView = new ScrollView();
             scrollView.Content = grid;
+
             StackLayout stackLayout = new StackLayout();
             stackLayout.Children.Add(AddButton);
+
             stackLayout.Children.Add(scrollView);
             Content = stackLayout;
             NavigationPage.SetHasNavigationBar(this, false);
