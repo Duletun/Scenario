@@ -19,6 +19,7 @@ namespace meta.Views
     public partial class CharacterPage : ContentPage
     {
         public CharacterViewModel ViewModel { get; private set; }
+
         public ObservableCollection<Param> arr;
         public List<Entry> entries;
         public void RadarAppear()
@@ -53,8 +54,61 @@ namespace meta.Views
             paramName.IsVisible = false;
             addParam.IsVisible = false;
         }
+
+        public void HideButtons()
+        {
+            addButton.IsVisible = false;
+            backButton.IsVisible = false;
+            delButton.IsVisible = false;
+            saveButton.IsVisible = false;
+        }
+
+        // Связки персов
+        
+       
+        private async void onToSvazClick(object sender, System.EventArgs e)
+        {
+            //ViewModel.ListViewModel.BackSaveCommand.Execute(null);
+            ViewModel.UpdateSvyazki();
+            await OpisStack.FadeTo(0, 100);
+
+            OpisStack.IsVisible = false;
+
+
+            if (ViewModel.Charrs.Count == 0)
+            {
+                noListData.IsVisible = true;
+            }
+            else
+            {
+                noListData.IsVisible = false;
+            }
+            SvazStack.Opacity = 0;
+
+            SvazStack.IsVisible = true;
+
+
+            await SvazStack.FadeTo(1, 100);
+        }
+
+        private async void onToOpisClick(object sender, System.EventArgs e)
+        {
+            await SvazStack.FadeTo(0, 100);
+
+            SvazStack.IsVisible = false;
+
+            OpisStack.Opacity = 0;
+
+            OpisStack.IsVisible = true;
+
+
+            await OpisStack.FadeTo(1, 100);
+
+        }
+
         public CharacterPage(CharacterViewModel vm)
         {
+
             ViewModel = vm;
             vm.Navigation = this.Navigation;
             entries = new List<Entry>();
@@ -88,9 +142,14 @@ namespace meta.Views
             {
                 addButton.IsVisible = false;
                 backButton.IsVisible = false;
+
+                svazButton.IsVisible = true;
+                SvazStack.IsVisible = false;
             }
             else
             {
+                svazButton.IsVisible = false;
+                SvazStack.IsVisible = false;
                 delButton.IsVisible = false;
                 saveButton.IsVisible = false;
             }
@@ -115,6 +174,8 @@ namespace meta.Views
                 }
             }*/
             this.BindingContext = ViewModel;
+
+           
         }
     }
 }

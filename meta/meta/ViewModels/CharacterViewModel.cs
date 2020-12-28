@@ -14,6 +14,9 @@ namespace meta.ViewModels
 {
     public class CharacterViewModel : INotifyPropertyChanged
     {
+
+        public ObservableCollection<CharacterViewModel> Charrs { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<ParamViewModel> Params { get; set; }
         CharactersListViewModel lvm;
@@ -27,6 +30,7 @@ namespace meta.ViewModels
         //static int a = 0;
         public CharacterViewModel()
         {
+            Charrs = new ObservableCollection<CharacterViewModel>();
             MoveToTopCommand = new Command(MoveToTop);
             MoveToBottomCommand = new Command(MoveToBottom);
             RemoveCommand = new Command(Remove);
@@ -55,7 +59,58 @@ namespace meta.ViewModels
                     this.Params.Add(new ParamViewModel() { Param = c });
                 }
             }
+
+            
+            //charss = App.Database.GetItems().ToList();
+            //String desc = Character.Description;
+
+
+
+
         }
+
+        public void UpdateSvyazki()
+        {
+            //Charrs = new ObservableCollection<CharacterViewModel>();
+            CharactersListViewModel model = ListViewModel;
+
+            Charrs.Clear();
+
+
+            string DescriptionCopy = Description;
+
+            for (int i = 0; i < model.Characters.Count; i++)
+            {
+                bool isThis = false;
+                for (int j = 0; j < model.Characters.Count; j++)
+                {
+                    if (DescriptionCopy.Contains(model.Characters[j].Name)
+                        && model.Characters[j].Name.Contains(model.Characters[i].Name) == true
+                        && j != i)
+                    {
+                        if (model.Characters[j].Name == Name)
+                        {
+                            string replaceStr = model.Characters[j].Name;
+                            DescriptionCopy = DescriptionCopy.Replace(replaceStr, "");
+                        }
+                        else
+                        {
+                            Charrs.Add(model.Characters[j]);
+                            string replaceStr = model.Characters[j].Name;
+                            DescriptionCopy = DescriptionCopy.Replace(replaceStr, "");
+                        }
+                    }
+                }
+
+                if (DescriptionCopy.Contains(model.Characters[i].Name) == true && model.Characters[i].Name != Name)
+                {
+
+                    Charrs.Add(model.Characters[i]);
+                }
+            }
+
+        }
+
         private void CreateParam(object name)
         {
             ParamViewModel AddedPar = new ParamViewModel() { Param = new Param { atach = Character.Id, Name = name.ToString(), Value = 50 }, ListViewModel = this };

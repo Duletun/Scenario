@@ -13,10 +13,14 @@ using meta.Views;
 using MetroLog;
 
 
+//xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+//android: Application.WindowSoftInputModeAdjust = "Resize"
+
 namespace meta
 {
     public partial class App : Application
     {
+        public static CharactersListPage charlist;
         public const string DATABASE_NAME3 = "notes.db";
         public const string DATABASE_NAME2 = "chapters.db";
         public const string DATABASE_NAME = "characters.db";
@@ -88,11 +92,9 @@ namespace meta
             }
 
         }
-        //
         public App()
         {
             InitializeComponent();
-
             Sharpnado.HorizontalListView.Initializer.Initialize(true, true);
             Sharpnado.Tabs.Initializer.Initialize(true, true);
             Sharpnado.Shades.Initializer.Initialize(loggerEnable: true, true);
@@ -117,7 +119,8 @@ namespace meta
             };
             viewModel.Navigation = tabgrid.Navigation;
 
-            NavigationPage charsp = new NavigationPage(new CharactersListPage());
+            charlist = new CharactersListPage();
+            NavigationPage charsp = new NavigationPage(charlist);
             NavigationPage.SetHasNavigationBar(charsp, false);
             tabbedPage.Children.Add(charsp);
             charsp.Title = "Герои";

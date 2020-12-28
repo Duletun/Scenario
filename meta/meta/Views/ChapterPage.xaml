@@ -3,13 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="meta.Views.ChapterPage"
              NavigationPage.HasNavigationBar = "false"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             android:Application.WindowSoftInputModeAdjust="Resize"
              >
     <ContentPage.Content>
         <StackLayout>
+
             <Label Text="Заголовок" FontSize="Medium" TextColor="#000000"/>
             <Entry Text="{Binding Title}" FontSize="Medium" />
             <Label Text="Содежание главы" FontSize="Medium" TextColor="#000000" Padding="0,50,0,0"/>
-            <Editor Text="{Binding Text}" FontSize="Medium"  HeightRequest="350" BackgroundColor="#DBEFFD" />
+
+            <ScrollView x:Name="editText" Orientation="Both">
+                <Editor  Text="{Binding Text}" FontSize="Medium" BackgroundColor="#DBEFFD" AutoSize="TextChanges" />
+            </ScrollView>
+            
+            <ScrollView x:Name="showText"  Orientation="Both">
+                <StackLayout x:Name ="labLayout" BackgroundColor="#DBEFFD" Spacing = "-2" >
+                    <!--<Label x:Name="showTextLabel" Text=""  FontSize="Medium"  TextColor="#000000" BackgroundColor="#DBEFFD" />-->
+                    
+                </StackLayout>
+            </ScrollView>
+
+
+            <StackLayout x:Name="buttonStack" Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button x:Name="doneButton" Text="Готово" Clicked="onDoneClick" IsVisible="true" BackgroundColor="#1b97f3" TextColor="#FFFFFF"/>
+                <Button x:Name="editButton" Text="Отредактировать" Clicked="onEditClick" BackgroundColor="#1b97f3" TextColor="#FFFFFF"/>
+            </StackLayout>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
