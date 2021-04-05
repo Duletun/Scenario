@@ -1,4 +1,4 @@
 # Scenario
 
 
-[url=https://ibb.co/HKWKPwF][img]https://i.ibb.co/HKWKPwF/Notes.gif[/img][/url] [url=https://ibb.co/5RqQngW][img]https://i.ibb.co/5RqQngW/Roadmap.gif[/img][/url]
+<a href="https://ibb.co/HKWKPwF"><img src="https://i.ibb.co/HKWKPwF/Notes.gif" alt="Notes" border="0"></a> <a href="https://ibb.co/5RqQngW"><img src="https://i.ibb.co/5RqQngW/Roadmap.gif" alt="Roadmap" border="0"></a>
