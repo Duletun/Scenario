@@ -25,9 +25,10 @@ Initially, it was conceived for development on the Android platform, but since X
 *Gif image  of chapters*
 
 
+### Test version
+[Download APK for Android](https://github.com/Duletun/doliPlot/releases)
+
 ### License
 Creators:
 - Duletun (k0Spelaren alt.)
 - begletsoid
-
-[Download](https://github.com/Duletun/doliPlot/releases)
