@@ -2,7 +2,7 @@
 #### Xamarin.Forms
 ### Description
 
-doliPlot is an application that helps you write scripts for all sorts of works.
+doliPlot is an application that helps you write scripts for many sorts of works.
 Initially, it was conceived for development on the Android platform, but since Xamarin.Form is a cross-platform UI framework, there is an opportunity to transfer it to other platforms.
 
 
