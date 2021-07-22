@@ -30,3 +30,4 @@ Creators:
 - Duletun (k0Spelaren alt.)
 - begletsoid
 
+[Download](https://github.com/Duletun/doliPlot/releases)
