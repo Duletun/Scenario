@@ -26,5 +26,7 @@ Initially, it was conceived for development on the Android platform, but since X
 
 
 ### License
-
+Creators:
+- Duletun (k0Spelaren alt.)
+- begletsoid
 
