@@ -36,7 +36,7 @@ Initially, it was conceived for development on the Android platform, but since X
   <img src="https://user-images.githubusercontent.com/76465730/149430261-3293998a-84c4-432f-bb1e-7ac0494c4399.png" alt="drawing" width="190"/>
   <img src="https://user-images.githubusercontent.com/76465730/149430276-c4744348-ac14-4185-b89c-72438e5f0e96.png" alt="drawing" width="190"/>
   <img src="https://user-images.githubusercontent.com/76465730/149430303-40651404-6b31-411c-9bdf-264cddf8ae27.png" alt="drawing" width="190"/>
-  <img src="https://user-images.githubusercontent.com/76465730/149430515-116d8bc8-6d67-4f1b-9bd7-7d53d780bd58.png" alt="drawing" width="190"/>
+  <img src="https://user-images.githubusercontent.com/76465730/149430802-705bd09c-1f8d-42c4-ae75-3bd9dadc1371.png" alt="drawing" width="190"/>
   </p>
 
 
@@ -45,6 +45,15 @@ Initially, it was conceived for development on the Android platform, but since X
 - Image and date of event in timeline, also name and description
 - Sortable and movable events of timeline
 - Dots are linked
+- ###### 3.1. Images (red text means linked word, clicking on it will open link name character page)
+  <p float="left">
+  <img src="https://user-images.githubusercontent.com/76465730/149430845-4b3a0bd3-7186-41f5-979b-bb516b37a9fe.png" alt="drawing" width="190"/>
+  <img src="https://user-images.githubusercontent.com/76465730/149430872-f9cf60ef-455d-4d21-bf0a-f23544530308.png" alt="drawing" width="190"/>
+  <img src="https://user-images.githubusercontent.com/76465730/149430893-b084caee-d70b-418e-a91c-b8432361d7fd.png" alt="drawing" width="190"/>
+  <img src="https://user-images.githubusercontent.com/76465730/149430941-e1fe2640-81ae-43cc-a026-c45aec53002c.png" alt="drawing" width="190"/>
+  </p>
+
+
 
 ##### 3. Notes
 - Ability to edit, add, delete, and save notes in memory.
