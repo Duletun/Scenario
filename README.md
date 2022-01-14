@@ -45,7 +45,7 @@ Initially, it was conceived for development on the Android platform, but since X
 - Image and date of event in timeline, also name and description
 - Sortable and movable events of timeline
 - Dots are linked
-- ###### 3.1. Images (red text means linked word, clicking on it will open link name character page)
+- ###### 3.1. Images (1 image - list of items about events (all editable) as timeline chronology)
   <p float="left">
   <img src="https://user-images.githubusercontent.com/76465730/149430845-4b3a0bd3-7186-41f5-979b-bb516b37a9fe.png" alt="drawing" width="195"/>
   <img src="https://user-images.githubusercontent.com/76465730/149430872-f9cf60ef-455d-4d21-bf0a-f23544530308.png" alt="drawing" width="195"/>
@@ -55,10 +55,16 @@ Initially, it was conceived for development on the Android platform, but since X
 
 
 
-##### 3. Notes
+##### 4. Notes
 - Ability to edit, add, delete, and save notes in memory.
 - Short description of note
 - Name and description
+- ###### 4.1. Images (red text means linked word, clicking on it will open link name character page)
+  <p float="left">
+  <img src="https://user-images.githubusercontent.com/76465730/149431335-186bf564-2330-46b1-bd67-5e25331e6db0.png" alt="drawing" width="195"/>
+  <img src="https://user-images.githubusercontent.com/76465730/149431354-8893be18-566a-4c0e-b602-c1d163b54b54.png" alt="drawing" width="195"/>
+  </p>
+
 
 
 ### Test version
