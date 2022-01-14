@@ -36,8 +36,9 @@ Initially, it was conceived for development on the Android platform, but since X
   <img src="https://user-images.githubusercontent.com/76465730/149430261-3293998a-84c4-432f-bb1e-7ac0494c4399.png" alt="drawing" width="190"/>
   <img src="https://user-images.githubusercontent.com/76465730/149430276-c4744348-ac14-4185-b89c-72438e5f0e96.png" alt="drawing" width="190"/>
   <img src="https://user-images.githubusercontent.com/76465730/149430303-40651404-6b31-411c-9bdf-264cddf8ae27.png" alt="drawing" width="190"/>
-  <img src="https://user-images.githubusercontent.com/76465730/149430345-adfa87f7-d5f6-4bb0-a8a5-4575faa65a32.png" alt="drawing" width="190"/>
+  <img src="https://user-images.githubusercontent.com/76465730/149430515-116d8bc8-6d67-4f1b-9bd7-7d53d780bd58.png" alt="drawing" width="190"/>
   </p>
+
 
 ##### 3. Timelines
 - Ability to edit, add, delete, and save dots of timeline in memory.
