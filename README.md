@@ -1,5 +1,4 @@
-# doliPlot - Scenario App for Android, IOS
-## by Duletun and begletsoid
+# doliPlot - Scenario App for Android, IOS (by Duletun and begletsoid)
 #### Xamarin.Forms, C#
 ### Description
 
