@@ -1,5 +1,6 @@
 # doliPlot - Scenario App for Android, IOS
-#### Xamarin.Forms
+## by Duletun and begletsoid
+#### Xamarin.Forms, C#
 ### Description
 
 Приложения для написания сценариев.
