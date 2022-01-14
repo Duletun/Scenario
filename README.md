@@ -2,6 +2,8 @@
 #### Xamarin.Forms
 ### Description
 
+Приложения для написания сценариев.
+
 doliPlot is an application that helps you write scripts for many sorts of works.
 Initially, it was conceived for development on the Android platform, but since Xamarin.Form is a cross-platform UI framework, there is an opportunity to transfer it to other platforms.
 
@@ -14,7 +16,8 @@ Initially, it was conceived for development on the Android platform, but since X
 - Name, description, icon.
 - There is a characteristic diagram that shows the general scheme
 - System of linked characters: if another existing character is mentioned in the description, then he appears in the list of linked characters
-- <p float="left">
+###### 1.1. Images
+<p float="left">
   <img src="https://user-images.githubusercontent.com/76465730/149429520-194ef928-9c5b-433c-b77c-cd46e9b2031c.png" alt="drawing" width="200"/>
   <img src="https://user-images.githubusercontent.com/76465730/149429900-ceb4b73c-e241-44d0-b2d9-0cab1bac40fa.png" alt="drawing" width="200"/>
   <img src="https://user-images.githubusercontent.com/76465730/149429924-09229a1d-d9c4-4308-9527-806fa095a641.png" alt="drawing" width="200"/>
