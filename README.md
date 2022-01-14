@@ -14,7 +14,7 @@ Initially, it was conceived for development on the Android platform, but since X
 - Name, description, icon.
 - There is a characteristic diagram that shows the general scheme
 - System of linked characters: if another existing character is mentioned in the description, then he appears in the list of linked characters
-- ![image](https://user-images.githubusercontent.com/76465730/149429520-194ef928-9c5b-433c-b77c-cd46e9b2031c.png)
+- <img src="https://user-images.githubusercontent.com/76465730/149429520-194ef928-9c5b-433c-b77c-cd46e9b2031c.png" alt="drawing" width="200"/>
 
 
 
@@ -23,6 +23,9 @@ Initially, it was conceived for development on the Android platform, but since X
 - Name and description.
 - Сonvenient editor space, horizontal and vertical endless fomat.
 - Links system: if you specify a character in the chapter content through the @ icon, then he will be highlighted in the text and you can go to him by clicking on the link
+- <img src="https://user-images.githubusercontent.com/76465730/149429725-c7741c49-6dd4-4dd5-8f41-da6fed31fe7a.png" alt="drawing" width="200"/>
+
+
 
 ##### 3. Timelines
 - Ability to edit, add, delete, and save dots of timeline in memory.
